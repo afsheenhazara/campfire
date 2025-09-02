@@ -3,5 +3,19 @@
     <style name="Base.Theme.Campfire" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/dark_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/dark_colorPrimaryDark</item>
+        <item name="colorAccent">@color/dark_colorAccent</item>
+        <item name="android:navigationBarColor">@color/dark_colorAccent</item>
+        <item name="android:windowBackground">@color/off_black</item>
     </style>
+
+    <style name="SignUpButton">
+        <item name="android:background">@drawable/button_shape_dark</item>
+    </style>
+
+    <style name="textColors">
+        <item name="android:color">@color/dark_colorAccent</item>
+    </style>
+
 </resources>
