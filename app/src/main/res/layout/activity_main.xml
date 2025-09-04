@@ -57,8 +57,7 @@
             android:layout_height="wrap_content"
             android:text="Already have an account? Log in"
             android:layout_marginTop="10dp"
-            android:textSize="16dp" 
-            style="@style/textColors"
+            android:textSize="16dp"
             tools:ignore="HardcodedText,SpUsage" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

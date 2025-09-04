@@ -14,10 +14,19 @@
         <item name="android:background">@drawable/button_shape</item>
     </style>
 
-    <style name="textColors">
-        <item name="android:color">@color/colorAccent</item>
+
+    <style name="Theme.Campfire" parent="Base.Theme.Campfire" /> <!-- main app theme -->
+
+    <!-- themes with action bar -->
+    <style name="ActionBarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/off_white</item>
     </style>
 
 
-    <style name="Theme.Campfire" parent="Base.Theme.Campfire" />
 </resources>
