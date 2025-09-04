@@ -15,7 +15,7 @@
     </style>
 
     <!-- themes with action bar -->
-    <style name="ActionBarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.ActionBarTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorPrimary">@color/dark_colorPrimary</item>
