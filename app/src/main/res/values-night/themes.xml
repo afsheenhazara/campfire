@@ -10,8 +10,12 @@
         <item name="android:windowBackground">@color/off_black</item>
     </style>
 
-    <style name="SignUpButton">
-        <item name="android:background">@drawable/button_shape_dark</item>
+    <style name="OrangeButtons">
+        <item name="android:background">@drawable/lighter_button_shape_dark</item>
+    </style>
+
+    <style name="RedButtons">
+        <item name="android:background">@drawable/darker_button_shape_dark</item>
     </style>
 
     <!-- themes with action bar -->

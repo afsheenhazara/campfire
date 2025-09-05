@@ -10,8 +10,12 @@
         <item name="android:windowBackground">@color/off_white</item>
     </style>
 
-    <style name="SignUpButton" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/button_shape</item>
+    <style name="OrangeButtons" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/lighter_button_shape</item>
+    </style>
+
+    <style name="RedButtons" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/darker_button_shape</item>
     </style>
 
 
@@ -27,7 +31,7 @@
         <item name="android:navigationBarColor">@color/colorAccent</item>
         <item name="android:windowBackground">@color/off_white</item>
         <item name="actionBarTheme">@color/colorPrimary</item>
-        <item name="android:title"></item>
+
     </style>
 
 
