@@ -29,4 +29,10 @@
         <item name="android:windowBackground">@color/off_black</item>
     </style>
 
+    <!-- themes for chat card view -->
+    <style name="ChatCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/dark_chatColor</item>
+        <item name="cardCornerRadius">10sp</item>
+    </style>
+
 </resources>

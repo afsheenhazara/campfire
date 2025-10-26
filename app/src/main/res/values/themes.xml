@@ -34,5 +34,11 @@
 
     </style>
 
+    <!-- themes for chat card view -->
+    <style name="ChatCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/chatColor</item>
+        <item name="cardCornerRadius">10sp</item>
+    </style>
+
 
 </resources>
