@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
@@ -38,6 +40,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
     public void onBindViewHolder(@NonNull UserHolder holder, int position) {
         holder.txtUsername.setText(users.get(position).getUsername());
         // set image by using Glide
+        Glide.with(context).load(users.get(position).getProfilePicture())
+                .error(R.drawable.ic_profile)
+                .placeholder(R.drawable.ic_profile)
+                .into(holder.img_pfp);
     }
 
     @Override
@@ -53,6 +59,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
             super(itemView);
             txtUsername = itemView.findViewById(R.id.txt_display_name);
             img_pfp = itemView.findViewById(R.id.img_pfp);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onUserClickedListener.onUserClicked(getAdapterPosition());
+                }
+            });
         }
     }
 }

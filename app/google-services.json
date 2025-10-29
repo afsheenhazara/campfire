@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "88506359951",
-    "project_id": "campfire-8ec6e",
-    "storage_bucket": "campfire-8ec6e.firebasestorage.app"
+    "project_number": "873825970507",
+    "firebase_url": "https://campfire-97fb8-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "campfire-97fb8",
+    "storage_bucket": "campfire-97fb8.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:88506359951:android:822ae05f1e2600270d50fa",
+        "mobilesdk_app_id": "1:873825970507:android:ee6cb28c971b2d12dda0ce",
         "android_client_info": {
           "package_name": "com.idv.campfire"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyByxuECzWXZWFK8CLqFPPUm7iKU-5X-KCE"
+          "current_key": "AIzaSyCgGmdVn0tJ4CD-zNBU9zZLnOKEEDLI_aw"
         }
       ],
       "services": {
