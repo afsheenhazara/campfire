@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ public class FriendsActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private UserAdapter userAdapter;
     UserAdapter.OnUserClickedListener onUserClickedListener;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,15 @@ public class FriendsActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.friendsRecycler);
         users = new ArrayList<>();
         progressBar = findViewById(R.id.progressBar);
+        swipeRefreshLayout = findViewById(R.id.swipeToRefresh);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getUsers();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         onUserClickedListener = new UserAdapter.OnUserClickedListener() {
             @Override
@@ -61,6 +72,7 @@ public class FriendsActivity extends AppCompatActivity {
     }
 
     private void getUsers() {
+        users.clear();
         FirebaseDatabase.getInstance().getReference("user").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -41,4 +41,5 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.3.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")
     implementation ("com.github.bumptech.glide:glide:5.0.5")
+    implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 }
