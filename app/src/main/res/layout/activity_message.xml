@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MessageActivity">
+
+    <LinearLayout
+        android:id="@+id/chat_nameplate"
+        android:layout_width="match_parent"
+        android:layout_height="70sp"
+        android:orientation="horizontal"
+        android:padding="5sp"
+        style="@style/ChatWindowNameplate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_gravity="center"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            app:cardCornerRadius="25sp"
+            android:layout_marginHorizontal="5sp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_profile"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/txt_display_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Username"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edt_chatBox"
+        android:layout_width="0sp"
+        android:layout_height="wrap_content"
+        android:minHeight="45sp"
+        android:maxHeight="100sp"
+        android:layout_marginStart="10sp"
+        android:layout_marginEnd="5sp"
+        android:layout_marginVertical="10sp"
+        android:paddingHorizontal="20sp"
+        android:paddingVertical="10sp"
+        android:hint="Let's chat!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/send_button"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/ChatBoxTheme"/>
+
+
+    <ImageView
+        android:id="@+id/send_button"
+        android:layout_width="45sp"
+        android:layout_height="45sp"
+        android:layout_marginVertical="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_send"/>
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerMessage"
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_marginHorizontal="10sp"
+        android:layout_marginVertical="10sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chat_nameplate"
+        app:layout_constraintBottom_toTopOf="@+id/edt_chatBox">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ProgressBar
+        android:id="@+id/progressMessages"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

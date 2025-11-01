@@ -22,7 +22,7 @@
     <style name="Theme.Campfire" parent="Base.Theme.Campfire" /> <!-- main app theme -->
 
     <!-- themes with action bar -->
-    <style name="Theme.ActionBarTheme" parent="Theme.AppCompat.Light">
+    <style name="Theme.ActionBarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -38,6 +38,16 @@
     <style name="ChatCardView" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/chatColor</item>
         <item name="cardCornerRadius">10sp</item>
+    </style>
+
+    <!-- chat window nameplate -->
+    <style name="ChatWindowNameplate">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <!-- chat box theme -->
+    <style name="ChatBoxTheme">
+        <item name="android:background">@drawable/chat_box_theme</item>
     </style>
 
 

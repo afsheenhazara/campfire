@@ -19,7 +19,7 @@
     </style>
 
     <!-- themes with action bar -->
-    <style name="Theme.ActionBarTheme" parent="Theme.AppCompat.Light">
+    <style name="Theme.ActionBarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorPrimary">@color/dark_colorPrimary</item>
@@ -33,6 +33,16 @@
     <style name="ChatCardView" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/dark_chatColor</item>
         <item name="cardCornerRadius">10sp</item>
+    </style>
+
+    <!-- chat window nameplate -->
+    <style name="ChatWindowNameplate">
+        <item name="android:background">@color/dark_colorPrimary</item>
+    </style>
+
+    <!-- chat box theme -->
+    <style name="ChatBoxTheme">
+        <item name="android:background">@drawable/chat_box_theme_dark</item>
     </style>
 
 </resources>
