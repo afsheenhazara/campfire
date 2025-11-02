@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,6 +29,7 @@ public class FriendsActivity extends AppCompatActivity {
     private UserAdapter userAdapter;
     UserAdapter.OnUserClickedListener onUserClickedListener;
     SwipeRefreshLayout swipeRefreshLayout;
+    String myImageUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,11 @@ public class FriendsActivity extends AppCompatActivity {
             @Override
             public void onUserClicked(int position) {
                 Toast.makeText(FriendsActivity.this, "Tapped on user "+users.get(position).getUsername(), Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(FriendsActivity.this, MessageActivity.class));
+                startActivity(new Intent(FriendsActivity.this, MessageActivity.class)
+                        .putExtra("usernameOfRoommate", users.get(position).getUsername())
+                        .putExtra("emailOfRoommate", users.get(position).getEmail())
+                        .putExtra("imgOfRoommate", users.get(position).getProfilePicture())
+                        .putExtra("myImg", myImageUrl));
             }
         };
 
@@ -85,6 +91,13 @@ public class FriendsActivity extends AppCompatActivity {
                 recyclerView.setAdapter(userAdapter);
                 progressBar.setVisibility(View.GONE);
                 recyclerView.setVisibility(View.VISIBLE);
+
+                for (User user: users) {
+                    if (user.getEmail().equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())) {
+                        myImageUrl = user.getProfilePicture();
+                        return;
+                    }
+                }
             }
 
             @Override
