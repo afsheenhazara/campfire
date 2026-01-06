@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     AppCompatButton btnSubmit;
     TextView txtSignLogInfo;  // text that displays below the button
     private boolean isSignUp = true; // variable to keep track of which page we are in
+                                     // default page is sign in page
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,22 +42,23 @@ public class MainActivity extends AppCompatActivity {
         // if user is already logged in, go directly to friends activity
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             startActivity(new Intent(MainActivity.this, FriendsActivity.class));
-            finish();
+            finish(); // clears all activities before friends, so pressing back button would exit the app
+                      // instead of going back to sign in page even tho we're already signed in
         }
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (isSignUp) {
+                if (isSignUp) {  // if the page is a sign up page, what happens if we click submit ?
                     if (edtUsername.getText().toString().isEmpty() || edtEmail.getText().toString().isEmpty() ||
-                            edtPassword.getText().toString().isEmpty()) {
+                            edtPassword.getText().toString().isEmpty()) {   //validating and checking credentials
                         Toast.makeText(MainActivity.this, "Invalid input.", Toast.LENGTH_SHORT).show();
                     } else {
                         handleSignUp();
                     }
                 }
-                else {
+                else { // if the page is a login page, what happens if we click submit?
                     if (edtEmail.getText().toString().isEmpty() || edtPassword.getText().toString().isEmpty()) {
                         Toast.makeText(MainActivity.this, "Invalid input.", Toast.LENGTH_SHORT).show();
                     } else {
@@ -66,18 +68,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        txtSignLogInfo.setOnClickListener(new View.OnClickListener() {
+        txtSignLogInfo.setOnClickListener(new View.OnClickListener() { // writing code for the dynamic submit button
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                if (isSignUp) {
-                    isSignUp = false;
+                if (isSignUp) {    // if the page is a sign up page,turn it into a log in page
+                    isSignUp = false;  // now its a login page
                     btnSubmit.setText("LOG IN");
                     txtSignLogInfo.setText("Don't have an account? Sign up");
                     edtUsername.setVisibility(View.GONE);
                 }
-                else {
-                    isSignUp = true;
+                else {            // if the page is a login page, turn it into a sign up page
+                    isSignUp = true;        // now its a sign up page
                     btnSubmit.setText("SIGN UP");
                     txtSignLogInfo.setText("Already have an account? Log in");
                     edtUsername.setVisibility(View.VISIBLE);
@@ -87,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void handleSignUp(){
+
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(edtEmail.getText().toString(), edtPassword.getText().toString())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
