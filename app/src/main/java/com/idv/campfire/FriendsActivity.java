@@ -86,6 +86,8 @@ public class FriendsActivity extends AppCompatActivity {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()) {
                     users.add(dataSnapshot.getValue(User.class));
                 }
+
+                //resetting adapter bc value of arraylist has been changed
                 userAdapter = new UserAdapter(users, FriendsActivity.this, onUserClickedListener);
                 recyclerView.setLayoutManager(new LinearLayoutManager(FriendsActivity.this));
                 recyclerView.setAdapter(userAdapter);

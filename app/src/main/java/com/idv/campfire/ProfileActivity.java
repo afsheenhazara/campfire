@@ -45,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
         imgProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent photoIntent = new Intent(Intent.ACTION_PICK);
+                Intent photoIntent = new Intent(Intent.ACTION_PICK); // creating an intent for a media picker activity
                 photoIntent.setType("image/*");
                 startActivityForResult(photoIntent, 1);
             }
@@ -57,6 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
                 uploadImage();
             }
         });
+
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-            imagePath = data.getData();
+            imagePath = data.getData(); // image path is a global variable, so no need to pass it to the function
             getImageInImageView();
         }
     }
@@ -85,16 +86,17 @@ public class ProfileActivity extends AppCompatActivity {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        imgProfile.setImageBitmap(bitmap);
+        imgProfile.setImageBitmap(bitmap); //displaying the image in image view
     }
 
+    // uploading the image to firebase storage
     private void uploadImage() {
         ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Uploading . . . ");
         pd.show();
 
         FirebaseStorage.getInstance().getReference("images/" +
-                UUID.randomUUID().toString())
+                UUID.randomUUID().toString())               // creating a new ID for each image that we upload
                 .putFile(imagePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {

@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
                             Toast.makeText(MainActivity.this, "Signed up successfully.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(MainActivity.this, FriendsActivity.class));
+                            finish();
                         } else {
                             Toast.makeText(MainActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -117,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             Toast.makeText(MainActivity.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(MainActivity.this, FriendsActivity.class));
+                            finish();
                         } else {
                             Toast.makeText(MainActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                         }
