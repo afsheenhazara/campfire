@@ -45,4 +45,16 @@
         <item name="android:background">@drawable/chat_box_theme_dark</item>
     </style>
 
+    <!-- message card theme -->
+    <style name="MessageCardTheme" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/dark_chatColor</item>
+        <item name="cardCornerRadius">10sp</item>
+    </style>
+
+    <!-- message text theme -->
+    <style name="MessageTextTheme">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>

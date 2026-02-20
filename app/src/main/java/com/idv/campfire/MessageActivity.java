@@ -2,8 +2,10 @@ package com.idv.campfire;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -11,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,6 +32,7 @@ public class MessageActivity extends AppCompatActivity {
     ArrayList<Message> messages;
     String usernameOfRoommate, emailOfRoommate, chatRoomId;
     RecyclerView recyclerMessage;
+    MessageAdapter messageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,27 @@ public class MessageActivity extends AppCompatActivity {
 
         messages = new ArrayList<>();
 
+        // on click listener for send button
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseDatabase.getInstance().getReference("messages/"+chatRoomId).push()
+                        .setValue(new Message(FirebaseAuth.getInstance().getCurrentUser().getEmail(),
+                                emailOfRoommate, edt_chatBox.getText().toString()));
+                edt_chatBox.setText("");
+            }
+        });
+
+        messageAdapter = new MessageAdapter(messages, getIntent().getStringExtra("myImg"),
+                getIntent().getStringExtra("imgOfRoommate"), MessageActivity.this);
+        recyclerMessage.setLayoutManager(new LinearLayoutManager(this));
+        recyclerMessage.setAdapter(messageAdapter);
+
+        Glide.with(MessageActivity.this)
+                .load(getIntent().getStringExtra("imgOfRoommate"))
+                .placeholder(R.drawable.ic_profile)
+                .error(R.drawable.ic_profile)
+                .into(userPfp);
 
         usernameOfRoommate = getIntent().getStringExtra("usernameOfRoommate");
         emailOfRoommate = getIntent().getStringExtra("emailOfRoommate");
@@ -79,12 +104,16 @@ public class MessageActivity extends AppCompatActivity {
 
     private void attachMessageListener(String chatRoomId) {
         FirebaseDatabase.getInstance().getReference("messages/" + chatRoomId).addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 messages.clear();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
                     messages.add(dataSnapshot.getValue(Message.class));
                 }
+
+                messageAdapter.notifyDataSetChanged();
+
                 recyclerMessage.scrollToPosition(messages.size() - 1);
                 recyclerMessage.setVisibility(View.VISIBLE);
                 progressMessages.setVisibility(View.GONE);
